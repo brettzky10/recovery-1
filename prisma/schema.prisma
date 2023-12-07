@@ -9,6 +9,18 @@ generator client {
   //previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
+
+//Dianostic
+model Program {
+  id       String @id @default(uuid()) @map("_id")
+  slug     String @unique
+  overview Json
+  workout  Json
+  diet     Json
+}
+
+
+//Dashboard
 model Course {
   id String @id @default(uuid())
   userId String
