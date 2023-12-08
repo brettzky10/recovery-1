@@ -1,7 +1,7 @@
 'use client';
 
 // imports
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import { useContext, useEffect } from 'react';
 import {
   Card,

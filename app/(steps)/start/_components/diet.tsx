@@ -5,7 +5,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { useState, useContext, useEffect } from 'react';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import CardComponent from './card';
 import Picker from './picker';
 

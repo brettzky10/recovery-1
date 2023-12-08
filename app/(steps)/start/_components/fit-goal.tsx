@@ -9,7 +9,7 @@ import powerAnimation from '@/public/animations/power.json';
 import healthAnimation from '@/public/animations/health.json';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import bulkAnimation from '@/public/animations/bulk.json';
 import recompositionAnimation from '@/public/animations/recomposition.json';
 import robotAnimation from '@/public/animations/robot.json';

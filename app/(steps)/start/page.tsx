@@ -2,7 +2,7 @@
 
 // imports
 import { useContext, useEffect, useState } from 'react';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import StepBar from './_components/step-bar';
 import BasicInfoCard from './_components/basic-info';
 import FitGoal from './_components/fit-goal';

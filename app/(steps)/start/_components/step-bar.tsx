@@ -2,7 +2,7 @@
 
 // imports
 import { useContext, useEffect, useState } from 'react';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import type { breakpointType, roadType } from '@/lib/step-types.h';
 import { PiSpinnerGap } from 'react-icons/pi'
 import { Button } from '@/components/ui/button';

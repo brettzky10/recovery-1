@@ -20,13 +20,13 @@ export const LandingNavbar = () => {
           <Image fill alt="Logo" src="/logo-dark.svg" />
         </div>
         <h1 className={cn("text-2xl font-bold text-white", font.className)}>
-          Recovr
+          Kine<span className="text-pink-400">teck</span>
         </h1>
       </Link>
       <div className="flex items-center gap-x-2">
-        <Link href={isSignedIn ? "/home" : "/sign-up"}>
+        <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button variant="outline" className="rounded-full transition transform active:scale-95 duration-200">
-            Get Started
+            {isSignedIn ? "Dashboard" : "Sign-up"}
           </Button>
         </Link>
       </div>

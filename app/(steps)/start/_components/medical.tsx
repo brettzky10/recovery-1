@@ -3,7 +3,7 @@
 // imports
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import { useState, useEffect, useContext } from 'react';
 import { Input } from '@/components/ui/input';
 import CardComponent from './card';

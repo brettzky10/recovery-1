@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Separator } from '@/components/ui/separator';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import { IoIosAdd, IoIosRemove } from 'react-icons/io';
 import { BiSolidDownArrow } from 'react-icons/bi';
 import CardComponent from './card';

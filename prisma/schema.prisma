@@ -12,7 +12,8 @@ generator client {
 
 //Dianostic
 model Program {
-  id       String @id @default(uuid()) @map("_id")
+  id       String @id @default(uuid()) //@map("_id")
+  userId   String
   slug     String @unique
   overview Json
   workout  Json

@@ -10,7 +10,7 @@ import nogymAnimation from '@/public/animations/nogym.json'
 import {
   Suspense, useState, useContext, useEffect,
 } from 'react';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import CardComponent from './card'
 import { Slider } from '@/components/ui/slider';
 import Picker from './picker';

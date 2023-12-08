@@ -14,7 +14,7 @@ export const LandingHero = () => {
   return (
     <div className="text-white font-bold py-36 text-center space-y-5">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
-        <h1>Try our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"> 30 second </span>body diagnostic exam to fix your</h1>
+        <h1>A <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"> 30 second </span>exam could help you fix your broken...</h1>
         <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 pb-5">
           <TypewriterComponent
             options={{
@@ -31,13 +31,19 @@ export const LandingHero = () => {
         </div>
       </div>
       <div className="text-sm md:text-xl font-light text-zinc-400">
-        Use our free diagnostic exam to find why your body hurts. We offer courses from top kinesiologists that will not only help you recover, but help you fix the root cause!
+        We offer courses from top kinesiologists and fitness nerds that will not only help you recover, but help you fix the root cause. <span className="text-pink-300">Let us show you how</span>
       </div>
       <div>
-        <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+        <Link href={isSignedIn ? "/dashboard" : "/start"}>
           <Button size="lg" className="w-60 mt-10 py-5 text-xl animate__animated animate__infinite animate__pulse rounded-full shadow-lg mx-auto bg-gradient-to-r from-purple-500 to-red-500 font-bold">
+            {isSignedIn ? 
+            "Dashboard"
+            : 
+            <div className="flex flex-row">
             Try Now
             <Lottie loop animationData={fireAnimation} className="ml-3 w-6" />
+           </div>}
+            
           </Button>
         </Link>
        {/*  <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
@@ -47,7 +53,7 @@ export const LandingHero = () => {
         </Link> */}
       </div>
       <div className="text-zinc-400 text-xs md:text-sm font-normal">
-        No credit card required.
+        {isSignedIn ? "No credit card required." : " "}
       </div>
     </div>
   );

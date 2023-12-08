@@ -38,25 +38,51 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import CopyLink from '../../start/_components/copy';
+import CopyLink from '@/app/(steps)/start/_components/copy';
+import { auth } from '@clerk/nextjs';
+import { redirect } from 'next/navigation';
+import { Program } from "@prisma/client";
+import { db } from "@/lib/db";
 
 const prisma = new PrismaClient();
 
-export default async function ProgramPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  // fetch data
+
+  export default async function ProgramGeneral(){
+    //user:
+    const { userId } = auth();
+
+    if (!userId) {
+        return redirect("/");
+      }
+
+    // fetch data
   let data: any = {};
+
+  await prisma.program.findFirst({
+    where: {
+        userId: userId
+    }
+  }).then((result)=> {
+    data = result;
+  })
+
+/* 
+
+  const programData = await db.program.findUnique({
+    where: { userId: userId },
+  })
+  .then((result) => {
+    data = result;
+  });
+
   await prisma.program
     .findUnique({
-      where: { slug: params.slug },
+      where: { userId: userId },
     })
     .then((result) => {
       data = result;
     });
-
+ */
   // returns
   if (!data) return <h1>NO DATA</h1>;
 
@@ -98,13 +124,7 @@ export default async function ProgramPage({
   return (
     <div className="px-6 xl:w-3/4 mx-auto py-10 flex flex-col gap-20 text-md">
       {/* share */}
-      <CopyLink params={params} />
-
-      <Link href="/dashboard">
-      Go to Dashboard
-      </Link>
-
-
+      {/* <CopyLink params={params} /> */}
       {/* overview */}
       <div className="flex flex-col gap-20">
         {/* Header - General overview */}
@@ -721,7 +741,7 @@ export default async function ProgramPage({
       </div>
 
       {/* share */}
-      <CopyLink params={params} />
+      {/* <CopyLink params={params} /> */}
     </div>
   );
 }

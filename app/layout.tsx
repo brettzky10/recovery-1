@@ -4,7 +4,7 @@ import './globals.css'
 import { ToastProvider } from '@/components/providers/toaster-provider'
 import { ConfettiProvider } from '@/components/providers/confetti-provider'
 import { ClerkProvider } from '@clerk/nextjs'
-import { StepsProvider } from '@/lib/context/steps';
+import { StepsProvider } from '@/components/providers/steps-provider';
 
 const inter = Inter({ subsets: ['latin'] })
 

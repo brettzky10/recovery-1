@@ -3,7 +3,7 @@
 // imports
 import type { breakpointType, roadType } from '@/lib/step-types.h'
 import { useContext, useState, useEffect } from 'react';
-import { StepsContext } from '@/lib/context/steps';
+import { StepsContext } from '@/components/providers/steps-provider';
 import { BsCaretDownFill } from 'react-icons/bs'
 import { Separator } from '@/components/ui/separator'
 

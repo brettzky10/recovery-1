@@ -5,6 +5,7 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
+import { auth } from '@clerk/nextjs';
 
 export async function POST(request: Request): Promise<any> {
   // get data from request
@@ -57,6 +58,7 @@ export async function POST(request: Request): Promise<any> {
 
   // save data to DB
   const prisma = new PrismaClient();
+  const {userId } = auth()
   const slug = result.name
     ? result.name + uuidv4().substring(0, 4)
     : uuidv4().substring(0, 5);
@@ -64,6 +66,7 @@ export async function POST(request: Request): Promise<any> {
     .create({
       data: {
         slug,
+        userId,
         diet: {},
         overview,
         workout: {},
