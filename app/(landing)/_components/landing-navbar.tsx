@@ -14,16 +14,16 @@ export const LandingNavbar = () => {
   const { isSignedIn } = useAuth();
 
   return (
-    <nav className="p-4 bg-transparent flex items-center justify-between">
+    <nav className="p-4 bg-transparent flex items-center justify-between mx-auto">
       <Link href="/" className="flex items-center">
-        <div className="relative h-8 w-8 mr-4">
-          <Image fill alt="Logo" src="/logo-dark.svg" />
+        <div className="relative h-16 w-16 mr-2">
+          <Image fill alt="Logo" src="/logo-white-2.png" />
         </div>
-        <h1 className={cn("text-2xl font-bold text-white", font.className)}>
-          Kine<span className="text-pink-400">teck</span>
+        <h1 className={cn("text-4xl font-bold text-white", font.className)}>
+          Kine<span className="text-slate-400">teck</span>
         </h1>
       </Link>
-      <div className="flex items-center gap-x-2">
+      <div className="flex items-center just gap-x-2">
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button variant="outline" className="rounded-full transition transform active:scale-95 duration-200">
             {isSignedIn ? "Dashboard" : "Sign-up"}

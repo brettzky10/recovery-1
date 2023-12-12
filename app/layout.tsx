@@ -9,19 +9,19 @@ import { StepsProvider } from '@/components/providers/steps-provider';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Recovr',
+  title: 'Kineteck',
   description: 'Your recovery specialists.',
   icons: {
     icon: [
       {
         media: "(prefers-color-scheme: light)",
-        url: "/logo.svg",
-        href: "/logo.svg",
+        url: "/logo-black-1.png",
+        href: "/logo-black-1.png",
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/logo-dark.svg",
-        href: "/logo-dark.svg",
+        url: "/logo-black-1.png",
+        href: "/logo-black-1.png",
       }
     ]
   }

@@ -7,6 +7,7 @@ import { CoursesList } from "@/components/courses-list";
 
 import { ProgramInfoCard } from "./_components/program-info-card";
 import ProgramGeneral from "./_components/program-general";
+import ChartComponent from "../dashboard/_components/bar-chart";
 
 export default async function Dashboard() {
   const { userId } = auth();
@@ -35,6 +36,7 @@ export default async function Dashboard() {
           variant="success"
        />
       </div>
+      {/* <ChartComponent/> */}
       <ProgramGeneral/>
     </div>
   )

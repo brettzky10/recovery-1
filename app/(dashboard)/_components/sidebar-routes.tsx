@@ -19,11 +19,11 @@ const accountRoutes = [
     label: "Dashboard",
     href: "/dashboard",
   },
-/*   {
+   {
     icon: List,
     label: "Overview",
-    href: `/program/${slug}`,
-  }, */
+    href: `/program`,
+  }, 
   {
     icon: Calendar,
     label: "Booking",

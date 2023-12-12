@@ -36,7 +36,7 @@ export default function CopyLink({ params }: { params: any }) {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-2 items-center">
-          <Input contentEditable={false} value={`https://localhost:3000/program/${params.slug}`} />
+          <Input contentEditable={false} value={`https://localhost:3000/program/${params.slug}`} readOnly />
           <div className="relative">
             <Button onClick={copy} className="w-32">Copy Link</Button>
             {is_copied && (

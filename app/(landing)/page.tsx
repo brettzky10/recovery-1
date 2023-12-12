@@ -1,10 +1,34 @@
 import React from 'react'
 import { LandingHero } from './_components/landing-hero'
+import Image from 'next/image'
+import { LandingDiagnose } from './_components/landing-dianose'
+import LandingCourses from './_components/landing-courses'
+import { Category, Course } from '@prisma/client'
+import { getLandingCourses } from '@/actions/get-landing-courses'
+import { Separator } from '@/components/ui/separator'
+/* import PromptCard from "./_components/landing-prompt-card";
+import BestSellers from ./_components/landing-bestsellers"; */
+import Future from "./_components/landing-future";
+import Partners from "./_components/landing-partners";
+/* import SellersBanner from "@/components/Shop/SellersBanner"; */
+import Footer from "./_components/landing-footer";
 
-const LandingPage = () => {
+
+
+
+const LandingPage = async () => {
+
+  const trending = true;
+
+/*   const {
+    trendingCourses,
+  } = await getLandingCourses(trending);
+ */
+
+
     return ( 
-      <div className="relative isolate dark:bg-gray-900">
-        <div className="absolute inset-x-0 top-28 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
+      <div className="relative isolate">
+        <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl mx-auto  dark:bg-gray-900 shadow-2xl" aria-hidden="true">
   
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           style={{
@@ -13,7 +37,7 @@ const LandingPage = () => {
           }}
           />
         </div>
-          <div className="py-12 sm:py-20 lg:pb-40">
+          <div className="py-12 sm:py-20 lg:pb-40 ">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="mx-auto max-w-4xl text-center">
                 <LandingHero/>
@@ -41,8 +65,52 @@ const LandingPage = () => {
           }}
           />
         </div>
+        <div>
+          <div className='absolute inset-x-0 top-z-10 transform-gpu overflow-hidden rounded-lg blur-xl'>
+              <Image src="/bg-tilt-web.png" fill alt="background image" className='relative w-full'/>
+          </div>
+          <div>
+            
+          </div>
+          <div className='absolute w-full'>
+          <div className='h-[600px] transform-gpu overflow-hidden rounded-lg blur-xl'>
+              <Image src="/bg-tilt-web.png" fill alt="background image" className='relative w-full'/>
+          </div>
+          </div>
         </div>
+         <div className='flex flex-col'>
+
+         
+        <div className='absolute top-[800px]'>
+           {/* items={[...items]} */}
+        
+          <LandingCourses />
+            {/* <Partners />
+            <Image
+                src={"https://pixner.net/aikeu/assets/images/footer/shape-two.png"}
+                width={120}
+                height={120}
+                alt=""
+                className="absolute right-[-30px]"
+              />
+             <SellersBanner /> */}
+            <br />
+            <br />
+            <Separator/>
+            {/* <Divider className="bg-[#ffffff23]" /> */}
+            <Footer />
+          </div>
+          </div>
+    </div>
   )
 }
 
 export default LandingPage
+
+
+
+        {/* <div className='w-full absolute'>
+              <LandingDiagnose/>
+              
+          </div> */}
+          
