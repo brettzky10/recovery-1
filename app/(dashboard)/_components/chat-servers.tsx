@@ -7,12 +7,11 @@ import { Separator } from "@/components/ui/separator";
 import { currentProfile } from "@/lib/current-profile"
 import { db } from "@/lib/db";
 
-import { NavigationAction } from "./navigation-action";
-import { NavigationItem } from "./navigation-item";
-import { NavigationCourses } from "./navigation-courses";
-import { SidebarRoutes } from "@/app/(dashboard)/_components/sidebar-routes";
+import { NavigationAction } from "@/components/navigation/navigation-action";
+import { NavigationItem } from "@/components/navigation/navigation-item";
+//import { NavigationCourses } from "@/components/navigation/navigation-courses";
 
-export const NavigationSidebar = async () => {
+export const ChatServers = async () => {
   const profile = await currentProfile();
 
   if (!profile) {
@@ -31,12 +30,7 @@ export const NavigationSidebar = async () => {
 
   return (
     <div
-      className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-[#1E1F22] bg-[#E3E5E8] py-3"
     >
-      <SidebarRoutes />
-      <Separator
-        className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto"
-      />
       <NavigationAction />
       {/* <NavigationCourses /> */}
       <Separator
@@ -55,14 +49,14 @@ export const NavigationSidebar = async () => {
       </ScrollArea>
       <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
         <ModeToggle />
-        <UserButton
+        {/* <UserButton
           afterSignOutUrl="/"
           appearance={{
             elements: {
               avatarBox: "h-[48px] w-[48px]"
             }
           }}
-        />
+        /> */}
       </div>
     </div>
   )

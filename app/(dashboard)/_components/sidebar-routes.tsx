@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
 import { Separator } from "@/components/ui/separator";
-import { ModeToggle } from "@/components/forum/mode-toggle";
-import { UserButton } from "@clerk/nextjs";
+import { ChatServers } from "./chat-servers";
 
 const guestRoutes = [
   {
@@ -59,6 +58,8 @@ export const SidebarRoutes = () => {
   const routes = isTeacherPage ? teacherRoutes : guestRoutes;
   const route2 = isTeacherPage ? accountRoutes : accountRoutes;
 
+
+
   return (
     <div className="flex flex-col w-full">
       {routes.map((route) => (
@@ -78,17 +79,8 @@ export const SidebarRoutes = () => {
           href={route2.href}
         />
       ))}
-      <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
-        <ModeToggle />
-        <UserButton
-          afterSignOutUrl="/"
-          appearance={{
-            elements: {
-              avatarBox: "h-[48px] w-[48px]"
-            }
-          }}
-        />
-      </div>
+      <Separator className="my-4"/>
+      {/* <ChatServers/> */}
     </div>
   )
 }
