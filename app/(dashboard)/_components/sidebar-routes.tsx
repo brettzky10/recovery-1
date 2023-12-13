@@ -1,10 +1,12 @@
 "use client";
 
-import { BarChart, Compass, Layout, List, Calendar } from "lucide-react";
+import { BarChart, Compass, Layout, List, Calendar, MessageSquare } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
 import { Separator } from "@/components/ui/separator";
+import { ModeToggle } from "@/components/forum/mode-toggle";
+import { UserButton } from "@clerk/nextjs";
 
 const guestRoutes = [
   {
@@ -28,6 +30,11 @@ const accountRoutes = [
     icon: Calendar,
     label: "Booking",
     href: "/booking",
+  },
+  {
+    icon: MessageSquare,
+    label: "New Chat",
+    href: "/setup",
   },
 ];
 
@@ -71,6 +78,17 @@ export const SidebarRoutes = () => {
           href={route2.href}
         />
       ))}
+      <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
+        <ModeToggle />
+        <UserButton
+          afterSignOutUrl="/"
+          appearance={{
+            elements: {
+              avatarBox: "h-[48px] w-[48px]"
+            }
+          }}
+        />
+      </div>
     </div>
   )
 }

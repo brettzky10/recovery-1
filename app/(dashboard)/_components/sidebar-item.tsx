@@ -4,6 +4,7 @@ import { LucideIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
+import { ActionTooltip } from "@/components/forum/action-tooltip";
 
 interface SidebarItemProps {
   icon: LucideIcon;
@@ -29,6 +30,11 @@ export const SidebarItem = ({
   }
 
   return (
+    <ActionTooltip
+      side="right"
+      align="center"
+      label={label}
+    >
     <button
       onClick={onClick}
       type="button"
@@ -41,11 +47,11 @@ export const SidebarItem = ({
         <Icon
           size={22}
           className={cn(
-            "text-slate-500",
+            "text-slate-500 dark:text-gray-200",
             isActive && "text-sky-700"
           )}
         />
-        {label}
+        {/* {label} */}
       </div>
       <div
         className={cn(
@@ -54,5 +60,6 @@ export const SidebarItem = ({
         )}
       />
     </button>
+    </ActionTooltip>
   )
 }
