@@ -12,7 +12,7 @@ generator client {
 
 
 
-//Dianostic
+//---Dianostic---
 model Program {
   id       String @id @default(uuid()) //@map("_id")
   userId   String
@@ -22,7 +22,7 @@ model Program {
   diet     Json
 }
 
-//--COURSES--
+//-----COURSES-----
 
 //Dashboard
 model Course {
@@ -139,7 +139,7 @@ model StripeCustomer {
   updatedAt DateTime @updatedAt
 }
 
-//--Forum--
+//-----Forum-----
 model Profile {
   id String @id @default(uuid())
   userId String @unique
@@ -283,4 +283,62 @@ model DirectMessage {
 
   @@index([memberId])
   @@index([conversationId])
+}
+
+//------Companion--------
+model CompanionCategory {
+  id            String @id @default(uuid())
+  name          String
+  companions    Companion[]
+}
+
+model Companion {
+  id            String @id @default(uuid())
+  userId        String
+  userName      String
+  src           String
+  name          String @db.Text
+  description   String
+  instructions  String @db.Text
+  seed          String @db.Text
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  companionCategory      CompanionCategory @relation(fields: [companionCategoryId], references: [id])
+  companionCategoryId    String
+
+  companionMessages      CompanionMessage[]
+
+  @@index([companionCategoryId])
+  //@@fulltext([name])
+}
+
+enum Role {
+  user
+  system
+}
+
+model CompanionMessage {
+  id          String   @id @default(uuid())
+  role        Role
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  companionId String
+  userId      String
+
+  companion   Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+  
+  @@index([companionId])
+}
+
+model UserSubscription {
+  id                        String    @id @default(cuid())
+  userId                    String    @unique
+  stripeCustomerId          String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId      String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId             String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd    DateTime? @map(name: "stripe_current_period_end")
 }

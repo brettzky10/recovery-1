@@ -3,7 +3,8 @@ const nextConfig = {
     images: {
       domains: [
         "utfs.io",
-        "pixner.net"
+        "pixner.net",
+        "res.cloudinary.com"
       ]
     }
   }
