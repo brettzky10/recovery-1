@@ -33,7 +33,7 @@ export const NavbarRoutes = () => {
           align="center"
           label="Instructor Logout"
         >
-          <Link href="/">
+          <Link href="/dashboard">
             <Button size="sm" variant="ghost">
               <LogOut className="h-4 w-4 mr-2" />
               Exit

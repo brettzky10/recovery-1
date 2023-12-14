@@ -72,7 +72,7 @@ const teacherRoutes = [
   {
     icon: FileText,
     label: "Journals",
-    href: "/journals",
+    href: "/journals/root",
     pro: false,
   },
   {
@@ -101,9 +101,12 @@ export const SidebarRoutes = ({
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.includes("/teacher");
+  const isJournalPage = pathname?.includes("/journals");
+  const isCompanionPage = pathname?.includes("/companion");
+  const isChatPage = pathname?.includes("/chat");
 
-  const routes = isTeacherPage ? teacherRoutes : guestRoutes;
-  const route2 = isTeacherPage ? guestRoutes : accountRoutes;
+  const routes = isTeacherPage || isJournalPage || isCompanionPage || isChatPage ? teacherRoutes : guestRoutes;
+  const route2 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage ? guestRoutes : accountRoutes;
 
 
   const onNavigate = (url: string, pro: boolean) => {
@@ -135,7 +138,7 @@ export const SidebarRoutes = ({
         />
         </div>
       ))}
-      <Separator className="my-4"/>
+      
       {route2.map((route2) => (
         <div
         onClick={() => onNavigate(route2.href, route2.pro)}
@@ -154,7 +157,7 @@ export const SidebarRoutes = ({
         />
         </div>
       ))}
-      <Separator className="my-4"/>
+      
       <NavbarRoutes />
       {/* <ChatServers/> */}
     </div>

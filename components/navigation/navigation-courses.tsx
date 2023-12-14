@@ -48,9 +48,10 @@ export const NavigationCourses = () => {
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.includes("/teacher");
+  const isJournalPage = pathname?.includes("/journals");
 
-  const routes = isTeacherPage ? teacherRoutes : guestRoutes;
-  const route2 = isTeacherPage ? accountRoutes : accountRoutes;
+  const routes = isTeacherPage || isJournalPage ? teacherRoutes : guestRoutes;
+  const route2 = isTeacherPage || isJournalPage ? guestRoutes : accountRoutes;
 
   return (
     <div className="flex flex-col w-full">
