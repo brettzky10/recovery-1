@@ -48,7 +48,7 @@ const CreatePage = () => {
   }
 
   return ( 
-    <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
+    <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full  p-6">
       <div>
         <h1 className="text-2xl">
           Name your course
@@ -65,14 +65,15 @@ const CreatePage = () => {
               control={form.control}
               name="title"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="bg-gray-200 
+                dark:bg-slate-500 rounded-xl p-5">
                   <FormLabel>
                     Course title
                   </FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web development'"
+                      placeholder="e.g. 'Shoulder Rehabilitation Course'"
                       {...field}
                     />
                   </FormControl>
