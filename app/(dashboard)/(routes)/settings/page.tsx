@@ -4,9 +4,15 @@ import SettingsUpgrade from "./_components/settings-upgrade";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { SwitchForm } from "./_components/settings-page";
+import BillingForm from "@/components/pdfchat/billing-form"
+import { getUserSubscriptionPlan } from "@/lib/stripe"
 
 const SettingsPage = async () => {
+  //For Companion Sub
   const isPro = await checkSubscription();
+  //PdfChat
+  const subscriptionPlan = await getUserSubscriptionPlan()
 
   return ( 
     <div className="h-full p-4 space-y-2">
@@ -68,6 +74,8 @@ const SettingsPage = async () => {
                   <Label htmlFor="cool-mode">Boring Mode</Label>
               </CardContent>
           </Card>
+          <SwitchForm/>
+          <BillingForm subscriptionPlan={subscriptionPlan} /> 
     </div>
    );
 }

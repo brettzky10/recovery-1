@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart, Compass, Layout, List, Calendar, MessageSquare, FileText, PlusCircle, Plus, Settings, File } from "lucide-react";
+import { BarChart, Compass, Layout, List, Calendar, MessageSquare, FileText, PlusCircle, Plus, Settings, File, BrainCircuit } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
@@ -82,6 +82,12 @@ const teacherRoutes = [
     pro: false, //true
   },
   {
+    icon: BrainCircuit,
+    label: "Pdf Chat",
+    href: "/pdf",
+    pro: false, //true
+  },
+  {
     icon: Settings,
     href: '/settings',
     label: "Settings",
@@ -104,9 +110,10 @@ export const SidebarRoutes = ({
   const isJournalPage = pathname?.includes("/journals");
   const isCompanionPage = pathname?.includes("/companion");
   const isChatPage = pathname?.includes("/chat");
+  const isPdfPage = pathname?.includes("/pdf");
 
-  const routes = isTeacherPage || isJournalPage || isCompanionPage || isChatPage ? teacherRoutes : guestRoutes;
-  const route2 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage ? guestRoutes : accountRoutes;
+  const routes = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage ? teacherRoutes : guestRoutes;
+  const route2 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage ? guestRoutes : accountRoutes;
 
 
   const onNavigate = (url: string, pro: boolean) => {

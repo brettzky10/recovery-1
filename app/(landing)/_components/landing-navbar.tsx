@@ -24,6 +24,11 @@ export const LandingNavbar = () => {
         </h1>
       </Link>
       <div className="flex items-center just gap-x-2">
+        <Link href="/pricing">
+          <Button variant="outline" className="rounded-full transition transform active:scale-95 duration-200">
+            Pricing
+          </Button>
+        </Link>
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button variant="outline" className="rounded-full transition transform active:scale-95 duration-200">
             {isSignedIn ? "Dashboard" : "Sign-up"}
