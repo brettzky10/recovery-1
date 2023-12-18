@@ -61,6 +61,7 @@ const onUploadComplete = async ({
       key: file.key,
       name: file.name,
       userId: metadata.userId,
+      //the file.url throws timeout sometimes so we use direct url
       url: `https://uploadthing-prod.s3.us-west-2.amazonaws.com/${file.key}`,
       uploadStatus: 'PROCESSING',
     },
