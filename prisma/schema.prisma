@@ -393,3 +393,14 @@ model PdfMessage {
   File      File?    @relation(fields: [fileId], references: [id])
   fileId    String?
 }
+
+//Notes
+model Documents {  
+  id            Int           @id @default(autoincrement())
+  publicId      String        @db.VarChar(12) @unique
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  title         String        @db.VarChar(255)
+  ownerId       String        @db.VarChar(255)
+  document      Json?         @db.Json
+}

@@ -54,13 +54,19 @@ const journalRoutes = [
     icon: BrainCircuit,
     label: "Journals",
     href: "/journals/root",
-    pro: false,
+    pro: false, //pro
   },
   {
     icon: Image,
     label: "Workflow",
-    href: "/workflow",
-    pro: false,
+    href: "/Workflow",
+    pro: false, //pro
+  },
+  {
+    icon: FileText,
+    label: "Notes",
+    href: "/notes",
+    pro: false, //pro
   },
 
 ];
@@ -138,10 +144,11 @@ export const SidebarRoutes = ({
   const isCompanionPage = pathname?.includes("/companion");
   const isChatPage = pathname?.includes("/chat");
   const isPdfPage = pathname?.includes("/pdf");
+  const isNotesPage = pathname?.includes("/notes");
 
-  const routes = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage ? teacherRoutes : guestRoutes;
-  const route2 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage ? settingsRoutes : accountRoutes;
-  const route3 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage ? journalRoutes : settingsRoutes;
+  const routes = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage || isNotesPage ? teacherRoutes : guestRoutes;
+  const route2 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage || isNotesPage ? settingsRoutes : accountRoutes;
+  const route3 = isTeacherPage || isJournalPage || isCompanionPage || isChatPage || isPdfPage || isNotesPage ? journalRoutes : settingsRoutes;
 
 
   const onNavigate = (url: string, pro: boolean) => {
