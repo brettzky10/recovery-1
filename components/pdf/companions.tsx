@@ -3,7 +3,8 @@ import Link from "next/link"
 import { Companion } from "@prisma/client"
 import { MessagesSquare } from "lucide-react";
 
-import { Card, CardFooter, CardHeader } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import AddToFavorites from "../add-to-favorites";
 
 interface CompanionsProps {
   data: (Companion & {
@@ -35,9 +36,9 @@ export const Companions = ({
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 pb-10">
       {data.map((item) => (
-        <Card key={item.name} className="bg-primary/10 rounded-xl cursor-pointer hover:opacity-75 transition border-0">
+        <Card key={item.name} className="bg-primary/10 rounded-xl  border-0">
           <Link href={`/chat/${item.id}`}>
-            <CardHeader className="flex items-center justify-center text-center text-muted-foreground">
+            <CardHeader className="flex items-center justify-center text-center text-muted-foreground cursor-pointer hover:opacity-75 transition">
               <div className="relative w-32 h-32">
                 <Image
                   src={item.src}
@@ -53,16 +54,20 @@ export const Companions = ({
                 {item.description}
               </p>
             </CardHeader>
+            </Link>
             <CardFooter className="flex items-center justify-between text-xs text-muted-foreground">
               <p className="lowercase">@{item.userName}</p>
+              {/* <AddToFavorites/> */}
+
               <div className="flex items-center">
                 <MessagesSquare className="w-3 h-3 mr-1" />
                 {item._count.companionMessages}
               </div>
             </CardFooter>
-          </Link>
+          
         </Card>
       ))}
     </div>
   )
 }
+

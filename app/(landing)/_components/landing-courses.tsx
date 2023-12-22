@@ -105,14 +105,14 @@ const LandingCourses = () => {
   }
 
   return (
-    <div className="w-full md:mt-96 md:min-h-screen flex items-center justify-center">
+    <div className="w-full md:mt-72 flex items-center justify-center">
       <div>
         <Card className="rounded-xl bg-white/20 border-0 p-5 mx-20 w-[300px] md:w-[800px]">
         <h1 className="font-Monserrat text-4xl py-5 xl:text-5xl 2xl:text-6xl font-[900] gap-y-56 text-center xl:leading-[80px] 2xl:leading-[100px] text-white">
           Courses by <span className="text-pink-600">top</span> <br /> Physios 
           <span className="text-pink-600"> &</span> Kinesiologists
           <div className="flex flex-row items-center justify-center">
-            <Lottie loop animationData={bulkAnimation} className="ml-3 w-16" />
+            {/* <Lottie loop animationData={bulkAnimation} className="ml-3 w-16" /> */}
             <Link href="/search" className="ml-5">
           <Button size="lg" className="w-60 mt-10 py-5 text-xl animate__animated animate__infinite animate__pulse rounded-full shadow-lg mx-auto bg-gradient-to-r from-purple-500 to-red-500 font-bold">
             
@@ -120,7 +120,7 @@ const LandingCourses = () => {
             
           </Button>
         </Link>
-            <Lottie loop animationData={gymAnimation} className="ml-3 w-24" />
+           {/*  <Lottie loop animationData={gymAnimation} className="ml-3 w-24" /> */}
           </div>
           
           {" "}

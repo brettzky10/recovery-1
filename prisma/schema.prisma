@@ -309,6 +309,7 @@ model Companion {
   companionCategoryId    String
 
   companionMessages      CompanionMessage[]
+  companionFavorites     CompanionFavorite[]
 
   @@index([companionCategoryId])
   //@@fulltext([name])
@@ -332,6 +333,13 @@ model CompanionMessage {
   companion   Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
   
   @@index([companionId])
+}
+
+model CompanionFavorite{
+  id          Int @id @default(autoincrement())
+  userId      String
+  companion   Companion   @relation(fields: [companionId], references: [id], onDelete: Cascade)
+  companionId String
 }
 
 model UserSubscription {

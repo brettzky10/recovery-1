@@ -10,6 +10,7 @@ import { Card, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import JournalBanner from "../_components/journal-banner";
 
 interface JournalPageProps {
   searchParams: {
@@ -21,9 +22,34 @@ interface JournalPageProps {
 const JournalPage = async ({
   searchParams
 }: JournalPageProps) => {
-  const data = await db.companion.findMany({
+  //My Favorites
+  const data1 = await db.companion.findMany({
     /* where: {
-      categoryId: searchParams.categoryId,
+      categoryId: searchParams.companionCategoryId,
+      name: {
+        search: searchParams.name,
+      },
+    },  */
+    where:{
+      companionCategoryId: searchParams.companionCategoryId,
+      
+    },
+    orderBy: {
+      createdAt: "desc"
+    },
+    include: {
+      _count: {
+        select: {
+          companionMessages: true,
+          
+        }
+      }
+    },
+  });
+  //Trending
+  const data2 = await db.companion.findMany({
+    /* where: {
+      categoryId: searchParams.companionCategoryId,
       name: {
         search: searchParams.name,
       },
@@ -39,20 +65,38 @@ const JournalPage = async ({
       }
     },
   });
+  //Trending in Canada
+  const data3 = await db.companion.findMany({
+    /* where: {
+      categoryId: searchParams.companionCategoryId,
+      name: {
+        search: searchParams.name,
+      },
+    }, */
+    orderBy: {
+      createdAt: "desc"
+    },
+    include: {
+      _count: {
+        select: {
+          companionMessages: true,
+          
+        }
+      }
+    },
+  });
 
   const companionCategories = await db.companionCategory.findMany();
 
   const subscriptionPlan = await getUserSubscriptionPlan()
 
   return (
-    <div className="h-full p-4 space-y-2">
+    <div className="h-full py-4 space-y-2">
       {/* Ask questions about pdfs */}
       <Dashboard subscriptionPlan={subscriptionPlan} />
 
       {/* Characters */}
-      {/* <SearchInput /> */}
- 
-          {/* Trending */}
+        {/* Trending */}
 
         {/* Sugar */}
       <MaxWidthWrapper>
@@ -67,31 +111,14 @@ const JournalPage = async ({
         </Link> */}
       </div>
       </MaxWidthWrapper>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl px-5">
+        {/* <SearchInput /> */}
         <Categories data={companionCategories} />
-        <Companions data={data} />
+        <Companions data={data1} />
       </div>
 
+      <JournalBanner/>
 
-        {/* Create */}
-      <MaxWidthWrapper className="mt-10 mb-20">
-        <Card className=" mx-auto max-w-6xl text-center mb-5 pt-10 px-10 pb-5">
-          <CardContent>
-            <h1 className="font-bold text-5xl mx-auto max-w-4xl text-center mb-10">
-            Speak with a <span className="text-gray-500">Ai Characters</span> that have been trained on <a href="/researchers" className=" text-teal-500 underline">top research journals</a>
-          </h1>
-          <Link href="/companion/new">
-              <Button variant="default">
-                Create
-              </Button>
-            </Link>
-          </CardContent>
-          <CardFooter className="items-center ">
-              
-          </CardFooter>
-        </Card>
-      </MaxWidthWrapper>
-      
 
 
       {/* Fitness */}
@@ -110,10 +137,31 @@ const JournalPage = async ({
       
       </MaxWidthWrapper>
 
-      <div className="mx-auto max-w-7xl">
-        <Categories data={companionCategories} />
-        <Companions data={data} />
+      <div className="mx-auto max-w-7xl px-5">
+        {/* <Categories data={companionCategories} /> */}
+        <Companions data={data2} />
       </div>
+
+        
+        {/* Create */}
+      <MaxWidthWrapper className="mt-10 mb-20">
+        <Card className=" mx-auto max-w-6xl text-center mb-5 pt-10 px-10 pb-5">
+          <CardContent>
+            <h1 className="font-bold text-5xl mx-auto max-w-4xl text-center mb-10">
+            Apply as a <span className="text-gray-500">Researcher</span> and let others chat with your <a href="/researchers" className=" text-teal-500 underline">Journals</a>
+          </h1>
+          <Link href="/companion/new">
+              <Button variant="default">
+                Create a Character
+              </Button>
+            </Link>
+          </CardContent>
+          <CardFooter className="items-center ">
+           
+          </CardFooter>
+        </Card>
+      </MaxWidthWrapper>
+      
 
       {/* Diet */}
       <MaxWidthWrapper>
@@ -131,11 +179,10 @@ const JournalPage = async ({
       
       </MaxWidthWrapper>
 
-      <div className="mx-auto max-w-7xl">
-        <Categories data={companionCategories} />
-        <Companions data={data} />
+      <div className="mx-auto max-w-7xl px-5">
+        {/* <Categories data={companionCategories} /> */}
+        <Companions data={data3} />
       </div>
-      
 
     </div>
   )
